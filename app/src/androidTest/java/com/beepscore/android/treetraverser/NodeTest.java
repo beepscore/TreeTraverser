@@ -56,4 +56,17 @@ public class NodeTest extends TestCase {
         assertEquals(expectedDescription, joe.toString());
     }
 
+    public void testConstructor() {
+        String name = "Joe";
+        Integer value = new Integer(5);
+        Node larry = new Node();
+        Node rick = new Node();
+        Node joe = new Node(name, value, larry, rick);
+
+        assertNotNull(joe);
+        assertEquals(name, joe.name);
+        assertEquals(value, joe.value);
+        assertEquals(larry, joe.left);
+        assertEquals(rick, joe.right);
+    }
 }

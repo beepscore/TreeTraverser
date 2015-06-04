@@ -10,6 +10,17 @@ public class Node {
     Node left = null;
     Node right = null;
 
+    public Node(String name, Integer value, Node left, Node right) {
+        this.name = name;
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
+
+    public Node() {
+        this(null, null, null, null);
+    }
+
     @Override
     public String toString() {
         String description =  nameDescription(name) + ", "

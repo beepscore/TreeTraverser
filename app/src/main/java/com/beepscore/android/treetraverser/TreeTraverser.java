@@ -7,6 +7,13 @@ import android.util.Log;
  */
 public class TreeTraverser {
 
+    /** Search a binary tree for a node with name.
+     * Usually in a tree each node has a property that is unique, e.g. node.value
+     * However a tree could allow nodes with duplicate properties such as node.name.
+     * @param name
+     * @param node starting node of binary tree
+     * @return true if any node has name
+     */
     public boolean isNameInTree(String name, Node node) {
 
         if (node == null) {

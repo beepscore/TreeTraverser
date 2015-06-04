@@ -30,4 +30,10 @@ public class TreeTraverserTest extends TestCase {
 
         start = nodeF;
     }
+
+    public void testIsNameInTree() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertFalse(traverser.isNameInTree("foo", start));
+    }
+
 }

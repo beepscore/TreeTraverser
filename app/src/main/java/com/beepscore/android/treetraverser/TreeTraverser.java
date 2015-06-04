@@ -6,7 +6,16 @@ package com.beepscore.android.treetraverser;
 public class TreeTraverser {
 
     public boolean isNameInTree(String name, Node node) {
-        return false;
+        if (node == null) {
+            return false;
+        }
+        // "pre-order" check node before subtrees
+        if (node.name == name) {
+            return true;
+        }
+        // recurse
+        return isNameInTree(name, node.left)
+                || isNameInTree(name, node.right);
     }
 
 }

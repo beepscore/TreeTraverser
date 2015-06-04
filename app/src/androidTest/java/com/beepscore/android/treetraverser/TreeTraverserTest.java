@@ -33,7 +33,22 @@ public class TreeTraverserTest extends TestCase {
 
     public void testIsNameInTree() {
         TreeTraverser traverser = new TreeTraverser();
+        assertFalse(traverser.isNameInTree(null, start));
         assertFalse(traverser.isNameInTree("foo", start));
+
+        assertTrue(traverser.isNameInTree("A", start));
+        assertTrue(traverser.isNameInTree("B", start));
+        assertTrue(traverser.isNameInTree("C", start));
+        assertTrue(traverser.isNameInTree("D", start));
+        assertTrue(traverser.isNameInTree("E", start));
+        assertTrue(traverser.isNameInTree("F", start));
+        assertTrue(traverser.isNameInTree("G", start));
+        assertTrue(traverser.isNameInTree("H", start));
+        assertTrue(traverser.isNameInTree("I", start));
     }
 
+    public void testIsNameInTreeNull() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertFalse(traverser.isNameInTree("A", null));
+    }
 }

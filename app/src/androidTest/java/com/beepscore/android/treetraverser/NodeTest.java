@@ -47,7 +47,7 @@ public class NodeTest extends TestCase {
         Node rick = new Node();
         joe.right = rick;
         assertEquals(rick, joe.right);
-        
+
         expectedDescription = "name: Joe, value: 5, left.name: Larry, right.name: null";
         assertEquals(expectedDescription, joe.toString());
 

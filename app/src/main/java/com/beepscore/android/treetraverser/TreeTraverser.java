@@ -36,6 +36,9 @@ public class TreeTraverser {
     }
 
     /** Search a binary tree for a node with value.
+     * Search is depth first, recursive.
+     * Search is "pre-order"- checks node before subtrees.
+     * Search checks node, then left subtree, then right subtree.
      * @param value may be null.
      * @param node starting node of binary tree
      * @return first node found with value. Else return null.
@@ -46,9 +49,8 @@ public class TreeTraverser {
             return null;
         }
 
-        Log.d("nodeWithValueInTree", node.toString());
-
         // "pre-order" check node before subtrees
+        Log.d("pre-order", node.toString());
 
         if ((value == null) && (node.value == null)) {
             return node;
@@ -69,6 +71,49 @@ public class TreeTraverser {
         }
 
         Node rightBranchResult = nodeWithValueInTree(value, node.right);
+        if (rightBranchResult != null) {
+            return rightBranchResult;
+        }
+
+        return null;
+    }
+
+    /** Search a binary tree for a node with value.
+     * Search is depth first, recursive.
+     * Search is "in-order".
+     * Search checks left subtree, then node, then right subtree.
+     * @param value may be null.
+     * @param node starting node of binary tree
+     * @return first node found with value. Else return null.
+     */
+    public Node nodeWithValueInTreeInOrder(Integer value, Node node) {
+
+        if (node == null) {
+            return null;
+        }
+
+        // check left branch
+        Node leftBranchResult = nodeWithValueInTreeInOrder(value, node.left);
+        if (leftBranchResult != null) {
+            return leftBranchResult;
+        }
+
+        // "in-order" check node
+        Log.d("in-order", node.toString());
+
+        if ((value == null) && (node.value == null)) {
+            return node;
+        }
+
+        if ((value != null) && (node.value != null)
+                && (node.value.equals(value))) {
+            // First two conditionals check both values are non null.
+            // They are objects and so are safe to compare via third conditional equals()
+            return node;
+        }
+
+        // check right branch
+        Node rightBranchResult = nodeWithValueInTreeInOrder(value, node.right);
         if (rightBranchResult != null) {
             return rightBranchResult;
         }

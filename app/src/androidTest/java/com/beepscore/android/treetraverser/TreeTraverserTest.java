@@ -71,6 +71,8 @@ public class TreeTraverserTest extends TestCase {
         assertFalse(traverser.isNameInTree("A", null));
     }
 
+    // ************************************************************************
+
     public void testNodeWithValueInTreeValueNull() {
         TreeTraverser traverser = new TreeTraverser();
 
@@ -92,6 +94,31 @@ public class TreeTraverserTest extends TestCase {
         TreeTraverser traverser = new TreeTraverser();
         Integer value = 8;
         assertNull(traverser.nodeWithValueInTree(value, null));
+    }
+
+    // ************************************************************************
+
+    public void testNodeWithValueInTreeInOrderValueNull() {
+        TreeTraverser traverser = new TreeTraverser();
+
+        Node actual = traverser.nodeWithValueInTreeInOrder(null, start);
+        assertEquals(null, actual.value);
+        assertEquals("A", actual.name);
+    }
+
+    public void testNodeWithValueInTreeInOrderValue() {
+        TreeTraverser traverser = new TreeTraverser();
+
+        Integer value = 8;
+        Node actual = traverser.nodeWithValueInTreeInOrder(value, start);
+        assertEquals(value, actual.value);
+        assertEquals("I", actual.name);
+    }
+
+    public void testNodeWithValueInTreeInOrderTreeNull() {
+        TreeTraverser traverser = new TreeTraverser();
+        Integer value = 8;
+        assertNull(traverser.nodeWithValueInTreeInOrder(value, null));
     }
 
 }

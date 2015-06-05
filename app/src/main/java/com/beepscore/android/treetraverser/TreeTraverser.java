@@ -26,6 +26,7 @@ public class TreeTraverser {
         Log.d("isNameInTree", node.toString());
 
         // "pre-order" check node before subtrees
+        // both null and String may be compared using ==
         if (node.name == name) {
             return true;
         }
@@ -55,10 +56,13 @@ public class TreeTraverser {
 
         if ((value != null) && (node.value != null)
                 && (node.value.equals(value))) {
+            // First two conditionals check both values are non null.
+            // They are objects and so are safe to compare via third conditional equals()
             return node;
         }
 
-        // recurse
+        // check subtrees recursively
+
         Node leftBranchResult = nodeWithValueInTree(value, node.left);
         if (leftBranchResult != null) {
             return leftBranchResult;

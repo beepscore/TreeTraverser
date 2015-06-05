@@ -29,14 +29,14 @@ public class TreeTraverserTest extends TestCase {
         Node nodeF = new Node("F", null, nodeB, nodeG);
 
         nodeA.value = null;
-        nodeB.value = new Integer(-3);
-        nodeC.value = new Integer(0);
-        nodeD.value = new Integer(17);
-        nodeE.value = new Integer(20);
-        nodeF.value = new Integer(-13);
-        nodeG.value = new Integer(99);
-        nodeH.value = new Integer(-1);
-        nodeI.value = new Integer(8);
+        nodeB.value = Integer.valueOf(-3);
+        nodeC.value = Integer.valueOf(0);
+        nodeD.value = Integer.valueOf(17);
+        nodeE.value = Integer.valueOf(20);
+        nodeF.value = Integer.valueOf(-13);
+        nodeG.value = Integer.valueOf(99);
+        nodeH.value = Integer.valueOf(-1);
+        nodeI.value = Integer.valueOf(8);
 
         start = nodeF;
     }
@@ -82,7 +82,7 @@ public class TreeTraverserTest extends TestCase {
     public void testNodeWithValueInTreeValue() {
         TreeTraverser traverser = new TreeTraverser();
 
-        Integer value = new Integer(8);
+        Integer value = Integer.valueOf(8);
         Node actual = traverser.nodeWithValueInTree(value, start);
         assertEquals(value, actual.value);
         assertEquals("I", actual.name);
@@ -90,7 +90,7 @@ public class TreeTraverserTest extends TestCase {
 
     public void testNodeWithValueInTreeTreeNull() {
         TreeTraverser traverser = new TreeTraverser();
-        Integer value = new Integer(8);
+        Integer value = Integer.valueOf(8);
         assertNull(traverser.nodeWithValueInTree(value, null));
     }
 

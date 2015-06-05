@@ -51,15 +51,7 @@ public class TreeTraverser {
 
         // "pre-order" check node before subtrees
         Log.d("pre-order", node.toString());
-
-        if ((value == null) && (node.value == null)) {
-            return node;
-        }
-
-        if ((value != null) && (node.value != null)
-                && (node.value.equals(value))) {
-            // First two conditionals check both values are non null.
-            // They are objects and so are safe to compare via third conditional equals()
+        if (isNodeValueEqualToValue(value, node)) {
             return node;
         }
 
@@ -76,6 +68,20 @@ public class TreeTraverser {
         }
 
         return null;
+    }
+
+    private boolean isNodeValueEqualToValue(Integer value, Node node) {
+        if ((value == null) && (node.value == null)) {
+            return true;
+        }
+
+        if ((value != null) && (node.value != null)
+                && (node.value.equals(value))) {
+            // First two conditionals check both values are non null.
+            // They are objects and so are safe to compare via third conditional equals()
+            return true;
+        }
+        return false;
     }
 
     /** Search a binary tree for a node with value.
@@ -100,15 +106,7 @@ public class TreeTraverser {
 
         // "in-order" check node
         Log.d("in-order", node.toString());
-
-        if ((value == null) && (node.value == null)) {
-            return node;
-        }
-
-        if ((value != null) && (node.value != null)
-                && (node.value.equals(value))) {
-            // First two conditionals check both values are non null.
-            // They are objects and so are safe to compare via third conditional equals()
+        if (isNodeValueEqualToValue(value, node)) {
             return node;
         }
 

@@ -35,7 +35,7 @@ public class TreeTraverser {
     }
 
     /** Search a binary tree for a node with value.
-     * @param value
+     * @param value may be null.
      * @param node starting node of binary tree
      * @return first node found with value. Else return null.
      */
@@ -48,14 +48,20 @@ public class TreeTraverser {
         Log.d("nodeWithValueInTree", node.toString());
 
         // "pre-order" check node before subtrees
-        if (node.value.equals(value)) {
+
+        if ((value == null) && (node.value == null)) {
+            return node;
+        }
+
+        if ((value != null) && (node.value != null)
+                && (node.value.equals(value))) {
             return node;
         }
 
         // recurse
         Node leftBranchResult = nodeWithValueInTree(value, node.left);
         if (leftBranchResult != null) {
-           return leftBranchResult;
+            return leftBranchResult;
         }
 
         Node rightBranchResult = nodeWithValueInTree(value, node.right);

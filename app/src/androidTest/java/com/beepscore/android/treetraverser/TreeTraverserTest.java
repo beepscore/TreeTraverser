@@ -28,7 +28,7 @@ public class TreeTraverserTest extends TestCase {
 
         Node nodeF = new Node("F", null, nodeB, nodeG);
 
-        nodeA.value = new Integer(3);
+        nodeA.value = null;
         nodeB.value = new Integer(-3);
         nodeC.value = new Integer(0);
         nodeD.value = new Integer(17);
@@ -41,9 +41,8 @@ public class TreeTraverserTest extends TestCase {
         start = nodeF;
     }
 
-    public void testIsNameInTree() {
+    public void testIsNameInTreeTrue() {
         TreeTraverser traverser = new TreeTraverser();
-        assertFalse(traverser.isNameInTree(null, start));
         assertFalse(traverser.isNameInTree("foo", start));
 
         assertTrue(traverser.isNameInTree("A", start));
@@ -57,21 +56,42 @@ public class TreeTraverserTest extends TestCase {
         assertTrue(traverser.isNameInTree("I", start));
     }
 
-    public void testIsNameInTreeNull() {
+    public void testIsNameInTreeFalse() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertFalse(traverser.isNameInTree("foo", start));
+    }
+
+    public void testIsNameInTreeNameNull() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertFalse(traverser.isNameInTree(null, start));
+    }
+
+    public void testIsNameInTreeTreeNull() {
         TreeTraverser traverser = new TreeTraverser();
         assertFalse(traverser.isNameInTree("A", null));
     }
 
-    public void testNodeWithValueInTree() {
+    public void testNodeWithValueInTreeValueNull() {
         TreeTraverser traverser = new TreeTraverser();
-        assertNull(traverser.nodeWithValueInTree(null, start));
 
-        Node actual = traverser.nodeWithValueInTree(new Integer(8), start);
-        assertEquals(new Integer(8), actual.value);
+        Node actual = traverser.nodeWithValueInTree(null, start);
+        assertEquals(null, actual.value);
+        assertEquals("A", actual.name);
     }
 
-    public void testNodeWithValueInTreeNull() {
+    public void testNodeWithValueInTreeValue() {
         TreeTraverser traverser = new TreeTraverser();
-        assertNull(traverser.nodeWithValueInTree(new Integer(8), null));
+
+        Integer value = new Integer(8);
+        Node actual = traverser.nodeWithValueInTree(value, start);
+        assertEquals(value, actual.value);
+        assertEquals("I", actual.name);
     }
+
+    public void testNodeWithValueInTreeTreeNull() {
+        TreeTraverser traverser = new TreeTraverser();
+        Integer value = new Integer(8);
+        assertNull(traverser.nodeWithValueInTree(value, null));
+    }
+
 }

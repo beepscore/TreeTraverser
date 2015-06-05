@@ -2,6 +2,9 @@ package com.beepscore.android.treetraverser;
 
 import android.util.Log;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by stevebaker on 6/4/15.
  */
@@ -41,7 +44,7 @@ public class TreeTraverser {
      * Search checks node, then left subtree, then right subtree.
      * @param value may be null.
      * @param node starting node of binary tree
-     * @return first node found with value. Else return null.
+     * @return first node found with value. return null if not found or node is null.
      */
     public Node nodeWithValueInTree(Integer value, Node node) {
 
@@ -119,4 +122,43 @@ public class TreeTraverser {
         return null;
     }
 
+    /** Search a binary tree for a node with value.
+     * Tree nodes are non-null.
+     * Search is breadth first.
+     * @param root starting node of binary tree.
+     * @param value may be null.
+     * @return first node found with value. return null if not found or if root is null.
+     */
+    public Node nodeInTreeWithValueBreadthFirst(Node root, Integer value) {
+
+        if (root == null) {
+            return null;
+        }
+
+        // LinkedList implements Queue, Dequeue
+        // http://stackoverflow.com/questions/12179887/android-queue-vs-stack
+        Queue<Node> queue = new LinkedList<Node>();
+
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+
+            Node node = queue.remove();
+            Log.d("breadth-first", node.toString());
+
+            if (isNodeValueEqualToValue(node, value)) {
+                return node;
+            }
+
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+        // didn't find a match
+        return null;
+    }
 }

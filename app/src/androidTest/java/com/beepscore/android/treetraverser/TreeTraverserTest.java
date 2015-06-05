@@ -98,29 +98,29 @@ public class TreeTraverserTest extends TestCase {
 
     // ************************************************************************
 
-    public void testNodeWithValueInTreeInOrderValueNull() {
+    public void testNodeInTreeWithValueInOrderValueNull() {
         TreeTraverser traverser = new TreeTraverser();
 
-        Node actual = traverser.nodeWithValueInTreeInOrder(null, start);
+        Node actual = traverser.nodeInTreeWithValueInOrder(start, null);
         assertEquals(null, actual.value);
         assertEquals("A", actual.name);
     }
 
-    public void testNodeWithValueInTreeInOrderValue() {
+    public void testNodeInTreeWithValueInOrderValue() {
         TreeTraverser traverser = new TreeTraverser();
 
         Integer value = 8;
-        Node actual = traverser.nodeWithValueInTreeInOrder(value, start);
+        Node actual = traverser.nodeInTreeWithValueInOrder(start, value);
         assertEquals(value, actual.value);
         assertEquals("I", actual.name);
     }
 
-    public void testNodeWithValueInTreeInOrderTreeNull() {
+    public void testNodeInTreeWithValueInOrderValueTreeNull() {
         TreeTraverser traverser = new TreeTraverser();
-        Integer value = 8;
-        assertNull(traverser.nodeWithValueInTreeInOrder(value, null));
-    }
 
+        Integer value = 8;
+        assertNull(traverser.nodeInTreeWithValueInOrder(null, value));
+    }
 
     // ************************************************************************
 

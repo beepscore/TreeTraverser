@@ -91,18 +91,18 @@ public class TreeTraverser {
      * Search is depth first, recursive.
      * Search is "in-order".
      * Search checks left subtree, then node, then right subtree.
-     * @param value may be null.
      * @param node starting node of binary tree
+     * @param value may be null.
      * @return first node found with value. Else return null.
      */
-    public Node nodeWithValueInTreeInOrder(Integer value, Node node) {
+    public Node nodeInTreeWithValueInOrder(Node node, Integer value) {
 
         if (node == null) {
             return null;
         }
 
         // check left branch
-        Node leftBranchResult = nodeWithValueInTreeInOrder(value, node.left);
+        Node leftBranchResult = nodeInTreeWithValueInOrder(node.left, value);
         if (leftBranchResult != null) {
             return leftBranchResult;
         }
@@ -114,7 +114,7 @@ public class TreeTraverser {
         }
 
         // check right branch
-        Node rightBranchResult = nodeWithValueInTreeInOrder(value, node.right);
+        Node rightBranchResult = nodeInTreeWithValueInOrder(node.right, value);
         if (rightBranchResult != null) {
             return rightBranchResult;
         }

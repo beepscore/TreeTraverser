@@ -28,6 +28,16 @@ public class TreeTraverserTest extends TestCase {
 
         Node nodeF = new Node("F", null, nodeB, nodeG);
 
+        nodeA.value = new Integer(3);
+        nodeB.value = new Integer(-3);
+        nodeC.value = new Integer(0);
+        nodeD.value = new Integer(17);
+        nodeE.value = new Integer(20);
+        nodeF.value = new Integer(-13);
+        nodeG.value = new Integer(99);
+        nodeH.value = new Integer(-1);
+        nodeI.value = new Integer(8);
+
         start = nodeF;
     }
 
@@ -50,5 +60,18 @@ public class TreeTraverserTest extends TestCase {
     public void testIsNameInTreeNull() {
         TreeTraverser traverser = new TreeTraverser();
         assertFalse(traverser.isNameInTree("A", null));
+    }
+
+    public void testNodeWithValueInTree() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertNull(traverser.nodeWithValueInTree(null, start));
+
+        Node actual = traverser.nodeWithValueInTree(new Integer(8), start);
+        assertEquals(new Integer(8), actual.value);
+    }
+
+    public void testNodeWithValueInTreeNull() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertNull(traverser.nodeWithValueInTree(new Integer(8), null));
     }
 }

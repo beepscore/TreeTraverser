@@ -51,7 +51,7 @@ public class TreeTraverser {
 
         // "pre-order" check node before subtrees
         Log.d("pre-order", node.toString());
-        if (isNodeValueEqualToValue(value, node)) {
+        if (isNodeValueEqualToValue(node, value)) {
             return node;
         }
 
@@ -70,7 +70,7 @@ public class TreeTraverser {
         return null;
     }
 
-    private boolean isNodeValueEqualToValue(Integer value, Node node) {
+    private boolean isNodeValueEqualToValue(Node node, Integer value) {
         if ((value == null) && (node.value == null)) {
             return true;
         }
@@ -106,7 +106,7 @@ public class TreeTraverser {
 
         // "in-order" check node
         Log.d("in-order", node.toString());
-        if (isNodeValueEqualToValue(value, node)) {
+        if (isNodeValueEqualToValue(node, value)) {
             return node;
         }
 

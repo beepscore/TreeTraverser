@@ -16,26 +16,37 @@ public class TreeTraverser {
      * Search checks node, then left subtree, then right subtree.
      * Usually in a tree each node has a property that is unique, e.g. node.value
      * However a tree could allow nodes with duplicate properties such as node.name.
-     * @param name
      * @param node starting node of binary tree
-     * @return true if any node has name
+     * @param name
+     * @return first node found with name. return null if not found or node is null.
      */
-    public boolean isNameInTree(String name, Node node) {
+    public Node nodeInTreeWithName(Node node, String name) {
 
         if (node == null) {
-            return false;
+            return null;
         }
 
-        Log.d("isNameInTree", node.toString());
+        Log.d("nodeInTreeWithName", node.toString());
 
         // "pre-order" check node before subtrees
         // both null and String may be compared using ==
         if (node.name == name) {
-            return true;
+            return node;
         }
-        // recurse
-        return isNameInTree(name, node.left)
-                || isNameInTree(name, node.right);
+
+        // check subtrees recursively
+
+        Node leftBranchResult = nodeInTreeWithName(node.left, name);
+        if (leftBranchResult != null) {
+            return leftBranchResult;
+        }
+
+        Node rightBranchResult = nodeInTreeWithName(node.right, name);
+        if (rightBranchResult != null) {
+            return rightBranchResult;
+        }
+
+        return null;
     }
 
     /** Search a binary tree for a node with value.

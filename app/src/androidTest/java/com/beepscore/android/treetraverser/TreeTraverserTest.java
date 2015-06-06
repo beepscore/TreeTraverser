@@ -41,34 +41,35 @@ public class TreeTraverserTest extends TestCase {
         start = nodeF;
     }
 
-    public void testIsNameInTreeTrue() {
-        TreeTraverser traverser = new TreeTraverser();
-        assertFalse(traverser.isNameInTree("foo", start));
+    // ************************************************************************
 
-        assertTrue(traverser.isNameInTree("A", start));
-        assertTrue(traverser.isNameInTree("B", start));
-        assertTrue(traverser.isNameInTree("C", start));
-        assertTrue(traverser.isNameInTree("D", start));
-        assertTrue(traverser.isNameInTree("E", start));
-        assertTrue(traverser.isNameInTree("F", start));
-        assertTrue(traverser.isNameInTree("G", start));
-        assertTrue(traverser.isNameInTree("H", start));
-        assertTrue(traverser.isNameInTree("I", start));
+    public void testNodeInTreeWithNameTreeNull() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertNull(traverser.nodeInTreeWithName(null, "A"));
+    }
+
+    public void testNodeInTreeWithNameNameNull() {
+        TreeTraverser traverser = new TreeTraverser();
+        assertNull(traverser.nodeInTreeWithName(start, null));
+    }
+
+    public void testNodeInTreeWithName() {
+        TreeTraverser traverser = new TreeTraverser();
+
+        assertEquals("A", traverser.nodeInTreeWithName(start, "A").name);
+        assertEquals("B", traverser.nodeInTreeWithName(start, "B").name);
+        assertEquals("C", traverser.nodeInTreeWithName(start, "C").name);
+        assertEquals("D", traverser.nodeInTreeWithName(start, "D").name);
+        assertEquals("E", traverser.nodeInTreeWithName(start, "E").name);
+        assertEquals("F", traverser.nodeInTreeWithName(start, "F").name);
+        assertEquals("G", traverser.nodeInTreeWithName(start, "G").name);
+        assertEquals("H", traverser.nodeInTreeWithName(start, "H").name);
+        assertEquals("I", traverser.nodeInTreeWithName(start, "I").name);
     }
 
     public void testIsNameInTreeFalse() {
         TreeTraverser traverser = new TreeTraverser();
-        assertFalse(traverser.isNameInTree("foo", start));
-    }
-
-    public void testIsNameInTreeNameNull() {
-        TreeTraverser traverser = new TreeTraverser();
-        assertFalse(traverser.isNameInTree(null, start));
-    }
-
-    public void testIsNameInTreeTreeNull() {
-        TreeTraverser traverser = new TreeTraverser();
-        assertFalse(traverser.isNameInTree("A", null));
+        assertNull(traverser.nodeInTreeWithName(start, "foo"));
     }
 
     // ************************************************************************

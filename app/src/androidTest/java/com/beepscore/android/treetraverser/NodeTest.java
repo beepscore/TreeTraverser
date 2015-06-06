@@ -19,7 +19,7 @@ public class NodeTest extends TestCase {
 
     public void testNodeToStringPropertiesNull() {
         Node node = new Node();
-        String expected = "name: null, value: null, left: null, right: null";
+        String expected = "null, value: null, left: null, right: null";
         assertEquals(expected, node.toString());
     }
 
@@ -33,7 +33,7 @@ public class NodeTest extends TestCase {
         assertEquals(testName, joe.name);
         assertEquals(testValue, joe.value);
 
-        String expectedDescription = "name: Joe, value: 5, left: null, right: null";
+        String expectedDescription = "Joe, value: 5, left: null, right: null";
         assertEquals(expectedDescription, joe.toString());
 
         Node larry = new Node();
@@ -41,18 +41,18 @@ public class NodeTest extends TestCase {
         larry.name = "Larry";
         assertEquals(larry, joe.left);
 
-        expectedDescription = "name: Joe, value: 5, left.name: Larry, right: null";
+        expectedDescription = "Joe, value: 5, left.name: Larry, right: null";
         assertEquals(expectedDescription, joe.toString());
 
         Node rick = new Node();
         joe.right = rick;
         assertEquals(rick, joe.right);
 
-        expectedDescription = "name: Joe, value: 5, left.name: Larry, right.name: null";
+        expectedDescription = "Joe, value: 5, left.name: Larry, right.name: null";
         assertEquals(expectedDescription, joe.toString());
 
         rick.name = "Rick";
-        expectedDescription = "name: Joe, value: 5, left.name: Larry, right.name: Rick";
+        expectedDescription = "Joe, value: 5, left.name: Larry, right.name: Rick";
         assertEquals(expectedDescription, joe.toString());
     }
 

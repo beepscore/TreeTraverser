@@ -31,7 +31,7 @@ public class Node {
     }
 
     protected String nameDescription(String aName) {
-        String description = "name: ";
+        String description = "";
         if (aName == null) {
             description = description.concat("null");
         } else {

@@ -2,6 +2,7 @@ package com.beepscore.android.treetraverser;
 
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -9,6 +10,8 @@ import java.util.Queue;
  * Created by stevebaker on 6/4/15.
  */
 public class TreeTraverser {
+
+    public ArrayList<String> nodesSearched = new ArrayList<String>();
 
     /** Search a binary tree for a node with name.
      * Search is depth first, recursive.
@@ -64,7 +67,9 @@ public class TreeTraverser {
         }
 
         // "pre-order" check node before subtrees
-        Log.d("pre-order", node.toString());
+        // Log.d("pre-order", node.toString());
+        this.nodesSearched.add(node.name);
+
         if (isNodeValueEqualToValue(node, value)) {
             return node;
         }
@@ -119,7 +124,9 @@ public class TreeTraverser {
         }
 
         // "in-order" check node
-        Log.d("in-order", node.toString());
+        // Log.d("in-order", node.toString());
+        this.nodesSearched.add(node.name);
+
         if (isNodeValueEqualToValue(node, value)) {
             return node;
         }

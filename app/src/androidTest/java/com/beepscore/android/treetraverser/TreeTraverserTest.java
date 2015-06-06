@@ -2,6 +2,8 @@ package com.beepscore.android.treetraverser;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+
 /**
  * Created by stevebaker on 6/4/15.
  */
@@ -15,28 +17,18 @@ public class TreeTraverserTest extends TestCase {
 
         // reference tree graph
         // https://en.wikipedia.org/wiki/Tree_traversal
-        Node nodeC = new Node("C", null, null, null);
-        Node nodeE = new Node("E", null, null, null);
-        Node nodeD = new Node("D", null, nodeC, nodeE);
+        Node nodeC = new Node("C", 0, null, null);
+        Node nodeE = new Node("E", 20, null, null);
+        Node nodeD = new Node("D", 17, nodeC, nodeE);
 
         Node nodeA = new Node("A", null, null, null);
-        Node nodeB = new Node("B", null, nodeA, nodeD);
+        Node nodeB = new Node("B", -3, nodeA, nodeD);
 
-        Node nodeH = new Node("H", null, null, null);
-        Node nodeI = new Node("I", null, nodeH, null);
-        Node nodeG = new Node("G", null, null, nodeI);
+        Node nodeH = new Node("H", -1, null, null);
+        Node nodeI = new Node("I", 8, nodeH, null);
+        Node nodeG = new Node("G", 99, null, nodeI);
 
-        Node nodeF = new Node("F", null, nodeB, nodeG);
-
-        nodeA.value = null;
-        nodeB.value = -3;
-        nodeC.value = 0;
-        nodeD.value = 17;
-        nodeE.value = 20;
-        nodeF.value = -13;
-        nodeG.value = 99;
-        nodeH.value = -1;
-        nodeI.value = 8;
+        Node nodeF = new Node("F", -13, nodeB, nodeG);
 
         start = nodeF;
     }
@@ -67,7 +59,7 @@ public class TreeTraverserTest extends TestCase {
         assertEquals("I", traverser.nodeInTreeWithName(start, "I").name);
     }
 
-    public void testIsNameInTreeFalse() {
+    public void testNodeInTreeWithNameNotInTree() {
         TreeTraverser traverser = new TreeTraverser();
         assertNull(traverser.nodeInTreeWithName(start, "foo"));
     }
@@ -95,6 +87,37 @@ public class TreeTraverserTest extends TestCase {
         Node actual = traverser.nodeInTreeWithValue(start, value);
         assertEquals(value, actual.value);
         assertEquals("I", actual.name);
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("F");
+        expected.add("B");
+        expected.add("A");
+        expected.add("D");
+        expected.add("C");
+        expected.add("E");
+        expected.add("G");
+        expected.add("I");
+        assertEquals(expected, traverser.nodesSearched);
+    }
+
+    public void testNodeInTreeWithValueNotInTree() {
+        TreeTraverser traverser = new TreeTraverser();
+
+        Integer value = 666;
+        Node actual = traverser.nodeInTreeWithValue(start, value);
+        assertNull(actual);
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("F");
+        expected.add("B");
+        expected.add("A");
+        expected.add("D");
+        expected.add("C");
+        expected.add("E");
+        expected.add("G");
+        expected.add("I");
+        expected.add("H");
+        assertEquals(expected, traverser.nodesSearched);
     }
 
     // ************************************************************************
@@ -121,6 +144,26 @@ public class TreeTraverserTest extends TestCase {
         Node actual = traverser.nodeInTreeWithValueInOrder(start, value);
         assertEquals(value, actual.value);
         assertEquals("I", actual.name);
+    }
+
+    public void testNodeInTreeWithValueInOrderValueNotInTree() {
+        TreeTraverser traverser = new TreeTraverser();
+
+        Integer value = 666;
+        Node actual = traverser.nodeInTreeWithValueInOrder(start, value);
+        assertNull(actual);
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("A");
+        expected.add("B");
+        expected.add("C");
+        expected.add("D");
+        expected.add("E");
+        expected.add("F");
+        expected.add("G");
+        expected.add("H");
+        expected.add("I");
+        assertEquals(expected, traverser.nodesSearched);
     }
 
     // ************************************************************************

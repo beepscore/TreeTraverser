@@ -191,4 +191,23 @@ public class TreeTraverserTest extends TestCase {
         assertEquals("I", actual.name);
     }
 
+    public void testNodeInTreeWithValueBreadthFirstValueNotInTree() {
+        TreeTraverser traverser = new TreeTraverser();
+
+        Integer value = 666;
+        Node actual = traverser.nodeInTreeWithValueBreadthFirst(start, value);
+        assertNull(actual);
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("F");
+        expected.add("B");
+        expected.add("G");
+        expected.add("A");
+        expected.add("D");
+        expected.add("I");
+        expected.add("C");
+        expected.add("E");
+        expected.add("H");
+        assertEquals(expected, traverser.nodesSearched);
+    }
 }

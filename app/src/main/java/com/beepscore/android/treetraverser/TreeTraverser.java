@@ -162,7 +162,8 @@ public class TreeTraverser {
         while (!queue.isEmpty()) {
 
             Node node = queue.remove();
-            Log.d("breadth-first", node.toString());
+            //Log.d("breadth-first", node.toString());
+            this.nodesSearched.add(node.name);
 
             if (isNodeValueEqualToValue(node, value)) {
                 return node;

@@ -3,6 +3,7 @@ package com.beepscore.android.treetraverser;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by stevebaker on 6/4/15.
@@ -88,7 +89,7 @@ public class TreeTraverserTest extends TestCase {
         assertEquals(value, actual.value);
         assertEquals("I", actual.name);
 
-        ArrayList<String> expected = new ArrayList<>();
+        List<String> expected = new ArrayList<>();
         expected.add("F");
         expected.add("B");
         expected.add("A");
@@ -107,7 +108,7 @@ public class TreeTraverserTest extends TestCase {
         Node actual = traverser.nodeInTreeWithValue(start, value);
         assertNull(actual);
 
-        ArrayList<String> expected = new ArrayList<>();
+        List<String> expected = new ArrayList<>();
         expected.add("F");
         expected.add("B");
         expected.add("A");
@@ -153,7 +154,7 @@ public class TreeTraverserTest extends TestCase {
         Node actual = traverser.nodeInTreeWithValueInOrder(start, value);
         assertNull(actual);
 
-        ArrayList<String> expected = new ArrayList<>();
+        List<String> expected = new ArrayList<>();
         expected.add("A");
         expected.add("B");
         expected.add("C");
@@ -198,7 +199,7 @@ public class TreeTraverserTest extends TestCase {
         Node actual = traverser.nodeInTreeWithValueBreadthFirst(start, value);
         assertNull(actual);
 
-        ArrayList<String> expected = new ArrayList<>();
+        List<String> expected = new ArrayList<>();
         expected.add("F");
         expected.add("B");
         expected.add("G");

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -11,7 +12,10 @@ import java.util.Queue;
  */
 public class TreeTraverser {
 
-    public ArrayList<String> nodesSearched = new ArrayList<String>();
+    /** Use more general interface List instead of restricting to type ArrayList
+     * http://stackoverflow.com/questions/2279030/type-list-vs-type-arraylist-in-java#2279059
+     */
+    public List<String> nodesSearched = new ArrayList<String>();
 
     /** Search a binary tree for a node with name.
      * Search is depth first, recursive.

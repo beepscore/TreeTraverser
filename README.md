@@ -3,7 +3,12 @@ Write Android app to traverse a binary tree.
 Do this as a learning exercise.
 
 # References
+
 <https://en.wikipedia.org/wiki/Tree_traversal>
+
+## tree_traverser Python
+Practice traversing a binary tree using recursive depth first search.  
+https://github.com/beepscore/tree_traverser
 
 # Results
 

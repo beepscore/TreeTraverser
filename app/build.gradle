@@ -27,4 +27,5 @@ dependencies {
     // changed compile to implementation
     // https://developer.android.com/studio/build/dependencies?utm_source=android-studio#dependency_configurations
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile 'junit:junit:4.12'
 }
